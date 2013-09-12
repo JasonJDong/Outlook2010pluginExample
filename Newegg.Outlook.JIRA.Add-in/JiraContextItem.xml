@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab id="TabMailCreateJiraCase"
+            getVisible="TabMailCreateJiraCase_GetVisible"
+            label="Jira">
+        <group label="   Operation   " id="GroupOperation" visible="true">
+          <button id="btnCreateJiraCase"
+              size="large"
+              label="Create Jira Issue"
+              getImage="GetLargeCustomImage"
+              onAction="OnCreateJiraCaseBatch"/>
+        </group>
+        <group label="   Setting   " id="GroupExplorerSetting" visible="true">
+          <button id="btnProjectsSelect"
+                      label=" Project "
+                      size="large"
+                      getImage="GetLargeCustomImage"
+                      onAction="OnProjectsSelect"/>
+          <button id="btnJiraUrlSetting"
+                  label=" Jira Url "
+                  size="large"
+                  getImage="GetLargeCustomImage"
+                  onAction="OnJiraUrlSetting"/>
+          <button id="btnUserAuthSetting"
+                  label=" User Auth "
+                  size="large"
+                  getImage="GetLargeCustomImage"
+                  onAction="OnUserAuthSetting"/>
+          <separator id="sp1"/>
+          <dropDown id="drpExplorerSelectIssueType"
+                    getItemLabel="OnGetIssueTypeItemLabel"
+                    getItemCount="OnGetIssueTypeItemCount"
+                    getSelectedItemIndex="OnGetSelectedIssueType"
+                    onAction="OnSelectedIssueType"
+                    label="Issue Type"/>
+          <button id="btnExplorerCurrentProjectSetting"
+                getImage="GetCustomImage"
+                getLabel="GetCurrentProjectLabel"
+                onAction="OnCurrentProjectSetting"/>
+          <button id="btnExplorerResetRequiredFieldsSetting"
+                getImage="GetCustomImage"
+                label="Reset Issue Field Value"
+                onAction="OnResetFieldValue"/>
+          <separator id="sp2"/>
+          <toggleButton id="tbnSendCreate" onAction="OnSendWithCreateJiraCase" label="Create Issue After Sent" getPressed="OnGetSendWithCreateJiraCasePressed"/>
+          <button id="btnRepeatUserMap" getImage="GetCustomImage" label="Repeat User Map" onAction="OnRepeatUserMap"/>
+        </group>
+      </tab>
+      <tab id="TabMailReadJiraCaseSetting"
+           getVisible="OnMailReadJiraCaseSettingVisible"
+           label="Jira">
+        <group label="   Operation   " id="GroupInspectorOperation" visible="true">
+          <button id="btnCreateJiraCaseSingle"
+              size="large"
+              label=" Create Jira Issue "
+              getImage="GetLargeCustomImage"
+              onAction="OnCreateJiraCaseReadMail"/>
+        </group>
+        <group id="groupSettingJiraCase" label="   Current Project   " visible="true">
+          <button id="btnInspectorCurrentProjectSetting"
+                getImage="GetCustomImage"
+                getLabel="GetCurrentProjectLabel"
+                onAction="OnCurrentProjectSetting"/>
+          <dropDown id="drpInspectorSelectIssueType"  
+                    getItemLabel="OnGetIssueTypeItemLabel"
+                    getItemCount="OnGetIssueTypeItemCount"
+                    getSelectedItemIndex="OnGetSelectedIssueType"
+                    onAction="OnSelectedIssueType"
+                    label="Issue Type" />
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+  <contextMenus>
+    <contextMenu idMso="MenuMailNewItem">
+      <button id="JiraCase"
+          label="Jira Issue"
+          onAction="OnJiraCaseClick"
+          insertAfterMso="NewTaskCompact"
+          getImage="GetCustomImage"
+          showImage="true"/>
+    </contextMenu>
+    <contextMenu idMso="ContextMenuMailItem">
+      <button id="MailCreateJiraCaseSingle"
+          label="Create Jira Issue"
+          getImage="GetCustomImage"
+          onAction="OnBatchCreateJiraCase"/>
+    </contextMenu>
+    <contextMenu idMso="ContextMenuMultipleItems">
+      <button id="MailCreateJiraCaseBatch"
+          label="Create Jira Issue"
+          getImage="GetCustomImage"
+          onAction="OnBatchCreateJiraCase"/>
+    </contextMenu>
+  </contextMenus>
+</customUI>
+
